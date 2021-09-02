@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D body;
 
     float move = 1f; //-1 to 1
+
     bool jump = true; //0 or 1
     void awake()
     {
@@ -27,6 +28,7 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
+
         Move();
         if(isGrounded == false)
         {
@@ -39,6 +41,7 @@ public class Movement : MonoBehaviour
         if(jump == true && isGrounded == true)
         {
             Jump();
+
         }
         transform.position += new Vector3(velocity.x, velocity.y, 0);
     }
@@ -79,4 +82,5 @@ public class Movement : MonoBehaviour
         }
         return((bool)castHit);
     }
+    
 }
