@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     Rigidbody2D body;
 
-    float move = 1; //-1 to 1
+    float move = 1f; //-1 to 1
     bool jump = true; //0 or 1
     void awake()
     {
@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        isGrounded = testGrounded();
+        isGrounded = cast(Vector2.down, true);
     }
     void FixedUpdate()
     {
@@ -50,15 +50,33 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
-        velocity.x = runSpeed * Time.deltaTime * move;
+        bool stopMove = true;
+        if(move > 0)
+        {
+            stopMove = cast(Vector2.right, true);
+            Debug.Log("here" + stopMove);
+        }
+        else if(move < 0)
+        {
+            stopMove = cast(Vector2.left, true);
+        }
+        if(stopMove == false)
+        {
+            velocity.x = runSpeed * Time.deltaTime * move;
+        }
+        else
+        {
+            velocity.x = 0;
+        }
     }
-    bool testGrounded() //Tests if the player is grounded
+    bool cast(Vector2 direction, bool show)
     {
-        RaycastHit2D castDown;
-        castDown = Physics2D.Raycast(transform.position, Vector2.down * groundOffset, groundOffset);
-        //Debug.DrawRay(transform.position, Vector2.down * groundOffset, Color.red, 1000);  //Shows the ray
-        //Debug.Log((bool)castDown);
-        return((bool)castDown);   //returns true is the player is Grounded
-        
+        RaycastHit2D castHit;
+        castHit = Physics2D.Raycast(transform.position, direction, groundOffset);
+        if(show == true)
+        {
+            Debug.DrawRay(transform.position, direction * groundOffset, Color.red, 1000);  //Shows the ray
+        }
+        return((bool)castHit);
     }
 }
