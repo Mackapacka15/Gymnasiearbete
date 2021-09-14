@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonControlls : MonoBehaviour
 {
+    public RigidBodyMovement movementScript;
     public float move; //-1 to 1
     public bool jump; //0 or 1
     // Start is called before the first frame update
@@ -15,15 +16,7 @@ public class ButtonControlls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-    public void ActivateJump()
-    {
-        jump = true;
-    }
-    public void DeactivateJump()
-    {
-        jump = false;
+        movementScript.move = move;
     }
     public void MoveLeft()
     {
