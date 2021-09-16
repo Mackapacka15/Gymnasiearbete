@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public Collider2D groundBox;
     public float gravity;
     public float groundOffset;
 
@@ -15,9 +14,9 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     Rigidbody2D body;
 
-    float move = 1f; //-1 to 1
+    public float move = 1f; //-1 to 1
 
-    bool jump = true; //0 or 1
+    public bool jump; //0 or 1
     void awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -43,12 +42,27 @@ public class Movement : MonoBehaviour
             Jump();
 
         }
+        if(jump == true)
+        {
+            Debug.Log("Hool");
+        }
         transform.position += new Vector3(velocity.x, velocity.y, 0);
     }
     void Jump()
     {
         
         velocity.y += jumpSpeed * Time.deltaTime;
+        Debug.Log("JUMP!");
+    }
+    public void ActivateJump()
+    {
+        Debug.Log("HERE");
+        jump = true;
+    }
+    public void DeactivateJump()
+    {
+        jump = false;
+        Debug.Log("FUCK");
     }
 
     void Move()
@@ -57,7 +71,6 @@ public class Movement : MonoBehaviour
         if(move > 0)
         {
             stopMove = cast(Vector2.right, true);
-            Debug.Log("here" + stopMove);
         }
         else if(move < 0)
         {

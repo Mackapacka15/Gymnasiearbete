@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GyroControl : MonoBehaviour
-{
+{   
+    public Movement moveScript;
+    private float move; //-1 to 1
 
-    Gyroscope gyroInput;
-    public GUIStyle style;
+    private Gyroscope gyro;
+    private bool gyroEnabled;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        gyroInput = Input.gyro;
-        gyroInput.enabled = true;
+        EnableGyro();
+    }
+    private void Update() {
+        {
+
+        }
+    }
+    private bool EnableGyro()
+    {
+        if(SystemInfo.supportsGyroscope)
+        {
+            gyro = Input.gyro;
+            gyro.enabled = true;
+            return true;
+        }
+        return false;
     }
 
-    void OnGUI()
+    private void changeMove()
     {
-        //Output the rotation rate, attitude and the enabled state of the gyroscope as a Label
-        GUI.Label(new Rect(500, 300, 200, 690), "Gyro rotation rate " + gyroInput.rotationRate, style);
-        GUI.Label(new Rect(500, 400, 200, 690), "Gyro attitude" + gyroInput.attitude, style);
-        GUI.Label(new Rect(500, 500, 800, 690), "Gyro enabled : " + gyroInput.enabled, style);
+        moveScript.move = move;
     }
 }
