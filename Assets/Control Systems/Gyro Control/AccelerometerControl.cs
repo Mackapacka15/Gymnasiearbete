@@ -6,6 +6,7 @@ public class AccelerometerControl : MonoBehaviour
 {
     private float dirX;
     public float moveSpeed = 20f;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,6 @@ public class AccelerometerControl : MonoBehaviour
     void Update()
     {
         dirX = Input.acceleration.x * moveSpeed;
-        transform.position = new Vector2(transform.position.x + dirX, transform.position.y);
+        player.transform.position = new Vector2(transform.position.x + dirX, transform.position.y);
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class RigidBodyMovement : MonoBehaviour
 {
     private float speed;
-    private bool canJump;
+    private int canJump = 0;
+    private int frameJumpLimit = 5;
 
     [Header("Refrences")]
     public Rigidbody2D body;
@@ -28,14 +29,14 @@ public class RigidBodyMovement : MonoBehaviour
         {
             speed = baseSpeed;
             body.velocity = Vector2.down * 0;
-            if(jump && canJump == true)
+            if(jump && canJump >= frameJumpLimit)
             {
                 body.AddForce(Vector2.up * jumpHight);
-                canJump = false;
+                canJump = 0;
             }
             else
             {
-                canJump = true;
+                canJump++;
             }
         }
         else

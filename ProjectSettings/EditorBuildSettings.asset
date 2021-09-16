@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Gyro.unity
-    guid: 8569e14cfb8ed7a4db3d4aed0558329e
+    path: Assets/Scenes/Menu.unity
+    guid: a7b06d41043238047a2bcf14f6f0086a
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: e4cd78317e4905446acdba64abcd7fa3
   m_configObjects: {}
