@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcff10003d91994da33120766bf16ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
   groundCheck: {fileID: 1741274154}
   ground:
     serializedVersion: 2
@@ -243,8 +244,9 @@ MonoBehaviour:
   isGrounded: 0
   move: 1
   jump: 0
+  maxSpeed: 100
   baseSpeed: 10
-  airResistance: 5
+  airResistance: 1
   jumpHight: 0
   fallMultiplier: 2.5
 --- !u!1 &3671839058408577715

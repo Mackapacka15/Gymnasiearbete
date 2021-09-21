@@ -14,11 +14,6 @@ public class GyroControl : MonoBehaviour
     {
         EnableGyro();
     }
-    private void Update() {
-        {
-
-        }
-    }
     private bool EnableGyro()
     {
         if(SystemInfo.supportsGyroscope)
